@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<script src="angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+firstName: <input ng-model="name">
+<h1>User entered: {{name}}</h1>
+lastName: <input ng-model="firstname">
+<h2>User entered: {{firstname}}</h2>
+</div>
+<div ng-app="">
+  <form>
+    Check to show a header:
+    <input type="checkbox" ng-model="myVar">
+  </form>
+  <h1 ng-show="myVar">My Header</h1>
+</div>
+<form>
+  Select the Course:<br>
+  <input type="radio" ng-model="myVar" value="cse">cse
+  <input type="radio" ng-model="myVar" value="mech">mech
+  <input type="radio" ng-model="myVar" value="automob">automob
+</form>
+
+<br><br>
+
+<form>
+  Select a topic:
+  <select ng-model="myVar">
+    <option value="PHP">PHP
+    <option value="DS">DS
+    <option value="IOT">IOT
+  </select>
+</form>
+<br><br>
+
+
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.name = "";
+});
+</script>
+
+</body>
+</html>

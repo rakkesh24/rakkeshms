@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<script src="angular.min.js"></script>
+<script>
+angular.module('users',[]).controller('controller1',function($scope){
+$scope.user=[];
+     $scope.firstName='';
+	 $scope.lastName='';
+	 	 //alert(user1);
+	 $scope.add=function(){
+	 var user1={
+	   "firstName":$scope.firstName,
+	   "lastName":$scope.lastName
+	 }
+
+	   //return $scope.fullname=$scope.firstName + " " + $scope.lastName;
+	    $scope.user.push(user1);
+	 }
+});
+</script>
+<style>
+table, td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+  }
+</style>
+<body>
+
+<div ng-app="users" ng-controller="controller1">
+First Name: <input type="text" ng-model="firstName"><br>
+Last Name: <input type="text" ng-model="lastName"><br>
+<br>
+<button ng-click="add()">Add</button>
+{{user}}
+
+
+<table>
+  <tr ng-repeat="x in user">
+    <td ng-if="$even" style="background-color:#f1f1f1">
+    {{ x.firstName }} </td>
+	<td ng-if="$odd">
+    {{ x.firstName }}</td>
+    <td ng-if="$even" style="background-color:#f1f1f1">
+    {{ x.lastName }}</td>
+    <td ng-if="$odd">
+    {{ x.lastName }}</td>
+	
+  </tr>
+</table>
+
+
+
+</div>
+
+</body>
+</html>

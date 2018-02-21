@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="angular.min.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.service('sr',function(){
+this.name=function(x,y){
+if(x == "admin" && y == "admin") { return true;
+}
+else{ return false; }
+};
+});
+app.controller('myCtrl', function($scope, $location, $rootScope, sr) {
+    $scope.login=true;
+ $rootScope.home = false;
+     $scope.userName='';
+     $scope.pwd='';
+$scope.toggle=function(){
+    var check=sr.name($scope.userName,$scope.pwd);
+ if(check == true) {
+     $rootScope.home=true;
+	 $scope.login=false;
+ }
+}
+});
+
+app.controller('welctrl', function($scope, $location, $rootScope,sr) {
+});
+
+</script>
+
+</head>
+<body ng-app="myApp">
+
+<div  ng-controller="myCtrl" ng-show="login">
+User Name: <input type="text" ng-model="userName"><br>
+password: <input type="password" ng-model="pwd"><br>
+<button ng-click="toggle()">Submit</button>
+</div>
+
+
+
+<div ng-controller="welctrl" ng-show="home">
+<p><h2>one + one <h2></p>
+<p><h3>2!!!<h3></p>
+</p>
+</div>
+
+</body>
+</html>

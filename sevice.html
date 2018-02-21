@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="angular.min.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $location, $rootScope) {
+    $scope.login=true;
+ $rootScope.home = false;
+     $scope.userName='';
+     $scope.pwd='';
+$scope.toggle=function(){
+   if($scope.userName=="admin" && $scope.pwd=="admin"){
+    $rootScope.home=true;
+    $scope.login=false;
+  }  }
+    $scope.myUrl = $location.absUrl();
+});
+
+app.controller('welctrl', function($scope, $location, $rootScope) {
+});
+
+</script>
+
+</head>
+<body ng-app="myApp">
+
+<div  ng-controller="myCtrl" ng-show="login">
+User Name: <input type="text" ng-model="userName"><br>
+password: <input type="password" ng-model="pwd"><br>
+<button ng-click="toggle()">Submit</button>
+</div>
+
+
+
+<div ng-controller="welctrl" ng-show="home">
+<p><h2>Kamal started his new party  <h2>
+</p>
+</div>
+
+</body>
+</html>
